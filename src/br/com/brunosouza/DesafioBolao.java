@@ -34,7 +34,7 @@ public class DesafioBolao implements Bolao {
 		Placar oficial = desafio.obterPlacarOficial();
 		Placar aposta = desafio.lancarPalpites();
 
-		desafio.obterDetalhesPontuacao(desafio, oficial, aposta);
+		desafio.obterDetalhesPontuacao(oficial, aposta);
 
 	}
 
@@ -78,9 +78,9 @@ public class DesafioBolao implements Bolao {
 		return placar;
 	}
 
-	private void obterDetalhesPontuacao(DesafioBolao desafio, Placar oficial, Placar aposta) {
+	private void obterDetalhesPontuacao( Placar oficial, Placar aposta) {
 		System.out.println("O Placar oficial foi: Time1: " + oficial.getTime1());
 		System.out.println("O Placar oficial foi: Time2: " + oficial.getTime2());
-		System.out.println("Sua pontuacao foi: " + desafio.calcularPontuacao(aposta, oficial));
+		System.out.println("Sua pontuacao foi: " + calcularPontuacao(aposta, oficial));
 	}
 }
