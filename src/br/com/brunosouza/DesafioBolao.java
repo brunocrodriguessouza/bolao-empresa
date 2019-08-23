@@ -6,28 +6,6 @@ import java.util.Random;
 
 public class DesafioBolao implements Bolao {
 
-	@Override
-	public int calcularPontuacao(Placar aposta, Placar oficial) {
-		int pontos = 0;
-		if ((aposta).equals(oficial)) {
-			return pontos + 20;
-		}
-
-		if (aposta.obterVencedor() == oficial.obterVencedor() || oficial.obterVencedor() == 0) {
-			pontos = 10;
-		}
-
-		if (aposta.getTime1() == oficial.getTime1() || aposta.getTime2() == oficial.getTime2()) {
-			pontos = pontos + 5;
-		}
-
-		return pontos;
-	}
-
-	public int obterResultado(Placar placar) {
-		return Integer.valueOf(placar.getTime1()).compareTo(Integer.valueOf(placar.getTime2()));
-	}
-
 	public static void main(String[] args) {
 		DesafioBolao desafio = new DesafioBolao();
 
@@ -72,15 +50,32 @@ public class DesafioBolao implements Bolao {
 
 			} catch (InputMismatchException e) {
 				System.out.println("Agradecemos por participar do nosso bolao...");
-				entrada.nextLine();
 			}
 		}
 		return placar;
 	}
 
-	private void obterDetalhesPontuacao( Placar oficial, Placar aposta) {
+	private void obterDetalhesPontuacao(Placar oficial, Placar aposta) {
 		System.out.println("O Placar oficial foi: Time1: " + oficial.getTime1());
 		System.out.println("O Placar oficial foi: Time2: " + oficial.getTime2());
 		System.out.println("Sua pontuacao foi: " + calcularPontuacao(aposta, oficial));
+	}
+
+	@Override
+	public int calcularPontuacao(Placar aposta, Placar oficial) {
+		int pontos = 0;
+		if ((aposta).equals(oficial)) {
+			return pontos + 20;
+		}
+
+		if (aposta.obterVencedor() == oficial.obterVencedor() || oficial.obterVencedor() == 0) {
+			pontos = 10;
+		}
+
+		if (aposta.getTime1() == oficial.getTime1() || aposta.getTime2() == oficial.getTime2()) {
+			pontos = pontos + 5;
+		}
+
+		return pontos;
 	}
 }
